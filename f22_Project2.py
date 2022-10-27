@@ -4,9 +4,42 @@ import re
 import os
 import csv
 import unittest
+import requests 
 
 
 def get_listings_from_search_results(html_file):
+    list_of_tups = [] #SHOULD BE (title- string form, cost for 1 nights rent - int form, id number - string form)
+    listing_ids = []
+    listing_titles = []
+    cost_per_night = []
+    file = open(html_file, "r")
+    soup = BeautifulSoup(file, 'html.parser')
+    
+    listing_title_line = soup.find_all('div', class_='t1jojoys dir dir-ltr' )
+    for line in listing_title_line:
+        title = line.text
+        listing_titles.append(title)
+
+    costs_lines = soup.find_all('div', class_='_1jo4hgw')
+    for line in costs_lines:
+        cost_line =line.find('span', class_ = 'a8jt5op dir dir-ltr')
+        cost = cost_line.text
+        pattern = '\$([0-9]{2,3})'
+        num = re.find(pattern, cost)
+        cost_per_night.append(str(num))
+
+    listings = soup.find_all('a', class_ = 'ln2bl2p dir dir-ltr')
+    for listing in listings:
+        listing_id = listing.get("target")
+        listing_id.strip("listing_")
+        listing_ids.append(listing_id)
+    for index in range(len(listing_ids)):
+        tup = (listing_titles[index], cost_per_night[index], listing_ids[index])
+        list_of_tups.append(tup)
+    print("LIST OF TUPS")
+    print(list_of_tups)
+    return list_of_tups
+
     """
     Write a function that creates a BeautifulSoup object on html_file. Parse
     through the object and return a list of tuples containing:
@@ -29,6 +62,8 @@ def get_listings_from_search_results(html_file):
 
 
 def get_listing_information(listing_id):
+
+
     """
     Write a function to return relevant information in a tuple from an Airbnb listing id.
     NOTE: Use the static files in the html_files folder, do NOT send requests to the actual website.
@@ -56,6 +91,8 @@ def get_listing_information(listing_id):
 
 
 def get_detailed_listing_database(html_file):
+
+
     """
     Write a function that calls the above two functions in order to return
     the complete listing information using the functions you’ve created.
@@ -73,6 +110,8 @@ def get_detailed_listing_database(html_file):
 
 
 def write_csv(data, filename):
+    # sorted_data = data.sort(NEED MORE)
+
     """
     Write a function that takes in a list of tuples (called data, i.e. the
     one that is returned by get_detailed_listing_database()), sorts the tuples in
@@ -98,6 +137,10 @@ def write_csv(data, filename):
 
 
 def check_policy_numbers(data):
+
+    reggie = '20[0-9]{2}\-00[0-9]{4}STR|STR\-0{3}[0-9]{4}'
+    list_of_non_matches = []
+
     """
     Write a function that takes in a list of tuples called data, (i.e. the one that is returned by
     get_detailed_listing_database()), and parses through the policy number of each, validating the
