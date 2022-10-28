@@ -14,30 +14,29 @@ def get_listings_from_search_results(html_file):
     cost_per_night = []
     file = open(html_file, "r")
     soup = BeautifulSoup(file, 'html.parser')
-    
+    file.close()
     listing_title_line = soup.find_all('div', class_='t1jojoys dir dir-ltr' )
     for line in listing_title_line:
         title = line.text
         listing_titles.append(title)
 
-    costs_lines = soup.find_all('div', class_='_1jo4hgw')
+    costs_lines = soup.find_all('span', class_='_tyxjp1')
     for line in costs_lines:
-        cost_line =line.find('span', class_ = 'a8jt5op dir dir-ltr')
-        cost = cost_line.text
-        pattern = '\$([0-9]{2,3})'
-        num = re.find(pattern, cost)
-        cost_per_night.append(str(num))
+        cost = line.text
+        cost_int = int(cost[1:])
+        cost_per_night.append(cost_int)
 
     listings = soup.find_all('a', class_ = 'ln2bl2p dir dir-ltr')
     for listing in listings:
-        listing_id = listing.get("target")
-        listing_id.strip("listing_")
-        listing_ids.append(listing_id)
+        listing_id = listing.get('target')
+        listing_id_num = listing_id[8:]
+        listing_ids.append(listing_id_num)
+
     for index in range(len(listing_ids)):
         tup = (listing_titles[index], cost_per_night[index], listing_ids[index])
         list_of_tups.append(tup)
-    print("LIST OF TUPS")
-    print(list_of_tups)
+    # print("LIST OF TUPS")
+    # print(list_of_tups)
     return list_of_tups
 
     """
@@ -58,11 +57,12 @@ def get_listings_from_search_results(html_file):
         ('Loft in Mission District', 210, '1944564'),  # example
     ]
     """
-    pass
 
 
 def get_listing_information(listing_id):
-
+    # #again not sure about which file to use 
+    # soup = BeautifulSoup(listing_id, 'html.parser')
+    # soup.find_all('span', class_="ll4r2nl dir dir-ltr")
 
     """
     Write a function to return relevant information in a tuple from an Airbnb listing id.
@@ -91,7 +91,10 @@ def get_listing_information(listing_id):
 
 
 def get_detailed_listing_database(html_file):
-
+    # detailed_listing_list = []
+    # first_three = get_listings_from_search_results(html_file)
+    # last_three = get_listing_information(html_file)
+    # detailed_listing_list.append(first_three[0], first_three[1], first_three[2], last_three[0], last_three[1], last_three[2])
 
     """
     Write a function that calls the above two functions in order to return
@@ -111,6 +114,12 @@ def get_detailed_listing_database(html_file):
 
 def write_csv(data, filename):
     # sorted_data = data.sort(NEED MORE)
+    # outFile = open(filename, "w") #DOES FILENAME NEED TO BE IN ""
+    # csv_out = csv.writer(outFile)
+    # csv_out.writerow("Listing Title", "Cost", "Listing ID", "Policy Number", "Place Type", "Number of Bedrooms")
+    # for tuple in data:
+    #     csv_out.writerow(tuple)
+
 
     """
     Write a function that takes in a list of tuples (called data, i.e. the
@@ -138,9 +147,20 @@ def write_csv(data, filename):
 
 def check_policy_numbers(data):
 
-    reggie = '20[0-9]{2}\-00[0-9]{4}STR|STR\-0{3}[0-9]{4}'
-    list_of_non_matches = []
-
+    # reggie = '20[0-9]{2}\-00[0-9]{4}STR|STR\-0{3}[0-9]{4}'
+    # list_of_non_matches = []
+    # for listing in data:
+    #     policy_num = data[3]
+    #     listing_id = data[2]
+    #     if policy_num == "Pending" or policy_num == "Exempt":
+    #         continue 
+    #     else:
+    #         if re.search(reggie, policy_num):
+    #             continue
+    #         else:
+    #             list_of_non_matches.append(listing_id)
+    # return list_of_non_matches
+    
     """
     Write a function that takes in a list of tuples called data, (i.e. the one that is returned by
     get_detailed_listing_database()), and parses through the policy number of each, validating the
@@ -163,6 +183,19 @@ def check_policy_numbers(data):
 
 
 def extra_credit(listing_id):
+    #not sure how to open file based on listing id 
+    # file_open = open(listing_id, "r")
+    # soup = BeautifulSoup(file_open, 'html.parser')
+    
+    # review_lines = soup.find_all('span', class_ ='_1qx9l5ba')
+    # for line in review_lines:
+    #     text_line = line.text
+    #     reggie = '([0-9]+)\sreviews'
+    #     num_reviews = re.search(reggie, text_line)
+    #     if num_reviews > 90:
+    #         return False
+    #     else:
+    #         return True 
     """
     There are few exceptions to the requirement of listers obtaining licenses
     before listing their property for short term leases. One specific exception
