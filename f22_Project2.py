@@ -357,13 +357,13 @@ class TestCases(unittest.TestCase):
             self.assertEqual(type(element), str)
         # check that the first element in the list is '16204265'
 
-    # def test_extra_credit(self):
-    #     html_list = ["1623609",
-    #                  "1944564",
-    #                  "1550913",
-    #                  "4616596",
-    #                  "6600081"]
-    #     self.assertEqual(extra_credit(html_list[0]), False)
+    def test_extra_credit(self):
+        html_list = ["1623609",
+                     "1944564",
+                     "1550913",
+                     "4616596",
+                     "6600081"]
+        self.assertEqual(extra_credit(html_list[0]), False)
     #     self.assertEqual(extra_credit(html_list[1]), False)
     #     self.assertEqual(extra_credit(html_list[2]), False)
     #     self.assertEqual(extra_credit(html_list[3]), False)
