@@ -366,8 +366,8 @@ class TestCases(unittest.TestCase):
         self.assertEqual(extra_credit(html_list[0]), False)
         self.assertEqual(extra_credit(html_list[1]), False)
         self.assertEqual(extra_credit(html_list[2]), False)
-    #     self.assertEqual(extra_credit(html_list[3]), False)
-    #     self.assertEqual(extra_credit(html_list[4]), False)
+        self.assertEqual(extra_credit(html_list[3]), False)
+        self.assertEqual(extra_credit(html_list[4]), False)
 
         
 
