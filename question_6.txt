@@ -1,0 +1,161 @@
+Questions:
+Once you’ve completed the coding portion of this assignment, answer the following questions using the following information.
+
+We know we want to keep airbnb accountable by checking if an 
+airbnb does not have a policy number 
+(a reference to the business license San Francisco requires
+to operate a short-term rental). Every entry in our database
+has a policy number, is pending a policy number, or is exempt 
+from having one (hotels are exempt from this law). This is 
+because airbnb requires listers to enter this information in a 
+text box before allowing their listing to go live. However, 
+looking through our database, there is a policy number that 
+doesn’t look like the other policy numbers. 
+The listing id “16204265” has an unusual policy number. 
+Using images of the exterior of the house posted on airbnb, 
+we can pinpoint which apartment building this rental unit is 
+located in, and check the San Francisco Planning Office to 
+find out if this airbnb does not have a policy number and 
+entered random numbers, or if the lister had a typo. 
+Through this process we found that this lister does NOT 
+have a short-term rental business license! This is an 
+illegal rental unit that is taking a housing unit away 
+from the local population. We can now file a complaint 
+with the planning office to start an investigation!
+
+Note that the “Property Information Map” of the San Francisco 
+Planning Office may not work on eduroam or MWireless.
+
+Turn in your answers to these questions as well as your code.
+Throughout this project, we acted as investigators to uphold 
+the system of accountability created by the San Francisco 
+lawmakers: listers must register with the city’s planning 
+office and put the business license’s number on Airbnb’s 
+website, Airbnb must display some effort in validating these 
+policy numbers, and third parties can register a complaint of 
+illegal short-term rentals with the city planning office. We 
+used web-scraping to do the latter using several hours of our 
+personal time.
+
+Imagine you’re a software developer at either 
+the San Francisco Planning Office (SFPO) or Airbnb.com. 
+Describe a different system that verifies that the business 
+license is valid for short term rentals in San Francisco and 
+list at least two arguments you might hear at your organization 
+(either SFPO or Airbnb.com) against adopting your system.
+
+ANSWER: I would propose that we change they system by which people
+can upload their rentals. My suggestion would be to have housing 
+platforms like airbnb linked to the SFPO. The process of applying to post 
+a short term rental through Airbnb would be the same, however there 
+would be a waiting area (queue) for houses once they are within the Airbnb system.
+The way I would propose this would be to have a SFPO page that 
+links to those who have applied to have their houses on Airbnb. That way, 
+as soon as SFPO reviews and approves housing, the listing will 
+automatically be posted to airbnb's website because it will be in a 
+queue of houses that are only waiting for approval. 
+
+The first arguement against this system would probably come from 
+both renters and airbnb. I think that they would argue that it is 
+not fair to have the company (and person posting the listing) have 
+to wait on the SFPO in order to post the listing, and in turn 
+make a profit. Additionally, I could see the SFPO also have an issue
+with this proposal. I think that they could claim that this process
+will put too much pressure on the planning office and that there will 
+be too much pressure from outside sources to work faster instead of 
+working carefully to ensure safety of the property for the people of San 
+Francisco. 
+
+The database we’ve created through web-scraping is a great 
+data source of information for data scientists in order to 
+answer and explore research questions. Skim through the 
+Housing Insecurity in the US Wikipedia page and describe 
+at least one research question that you could answer or 
+explore using this data if you were a data scientist working 
+with a housing activist organization to fight against housing 
+insecurity.
+
+ANSWER: After reading about housing insecurity in the 
+United States, I saw that there are many research 
+questions that can be answered / explored using the 
+data we found by setting up our tests. If we were to 
+be working with a housing activist organization whose
+job it was to fight housing insecurity, we could set 
+up a similar data base to scrape data on housing 
+insecurity. This program could work similarly to the one 
+we developed by using certain housing ID numbers, or 
+in this case, something like area code may be more applicable.
+From there, we could correlate different factors that lead to housing 
+instability such as income level in that area, population, 
+and homelessness. Using this data and correlating it 
+together we could determine if there is one factor that 
+plays a larger role in housing instability or if the 
+causes differ by area code. We would answer this question 
+by scraping the data from the website and seeing which 
+factors had the largest porportional affect on the area, 
+and reporting those fidnings accordingly. 
+
+As discussed in the introduction, the legality of web 
+scraping is still uncertain in the US. Skim through the 
+Legal Issues section of Web Scraping in the US on Wikipedia 
+and this article about the legal issues with the Computer 
+Fraud and Abuse Act, and describe at least one factor you 
+believe is important to consider when discussing the legality 
+of web scraping and why.
+
+ANSWER: The one thing that sticks out to me when looking 
+at web scraping and whether or not/ to what extent it 
+is legal is understanding what data is being used.
+In my eyes, part of what makes it hard to develop cases 
+against web scraping is that web scrapers take data that 
+is PUBLIC. Although web scrapers take data from a website's 
+servers, it does not take data that the company has created and 
+concealed, but rather data that is available to any member 
+of the public. On the other hand of this debate is when 
+company's scrape website data that is private. For example, 
+when 3Taps scraped classified housing adds from Craiglist. In 
+this context, my idea of web scraping changes and it seems much 
+less ethically (and legally) acceptable. Using public data is one 
+thing, but accessing private data is another, and I agree with 
+the US's ruling of saying doing so violates the CFAA. 
+However, the lines on this are not always clear, and I think 
+that more clear rules need to be developed so people on both the 
+web scraping and web design side understand their limits and 
+so they can act accordingly. 
+
+
+
+Scraping public data does not always lead to positive 
+results for society. While web scraping is important 
+for accountability and open access of information, w
+e must also consider issues of privacy as well. 
+Many argue that using someone’s personal data without 
+their consent (even if publicly provided) is unethical. 
+Web scraping requires thoughtful intervention, what are 
+two or more guidelines that must we consider when deciding 
+to use or not to use public data?
+
+ANSWER: I believe that data scraping is a very complicated topic
+and I understand the arguments being made on both sides. 
+Especially in regards to scraping and personal information, 
+I think that more strict laws should exist to protect people.
+I think that there could be a middle ground to this issue. 
+For example, personal information linked to a specific person 
+should be protected from web scraping; however, I think that if 
+it is public data, it should be able to be used without the connection 
+to a specific identity. For example, if we used someone's personal data 
+to try to understand a demographic this person's identity should 
+be concealed, but their actual information that can be used to 
+better understand groups of people should be accessible by a identifier 
+such as person1 instead of a real person's name. Another guideline I would 
+make would be that personal information cannot be shared. I think that a lot of 
+good things can come from looking at, analyzing, and reflecting on data 
+and trends from individuals and that seeing trends based on people's 
+characteristics or a common sub-group can be beneficial for businesses and people in 
+general. However, if personal data is used to see trends and serve a purpose, 
+the personal data should not be shared, but rather only the findings from that data. 
+Lastly, I think that there should be exceptions to the privacy rules in place in certain 
+scenarios. A possible solution to this would be to develop an executive board or 
+something similar in order to decide if the public benefit of scraping personal data 
+outweighs the potential negatives so that if the public will benefit, 
+such endeavors can be carried out without punishment. 
